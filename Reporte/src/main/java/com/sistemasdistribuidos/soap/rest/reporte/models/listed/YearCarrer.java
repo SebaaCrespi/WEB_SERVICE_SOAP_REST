@@ -1,4 +1,4 @@
-package com.sistemasdistribuidos.soap.rest.reporte.listed;
+package com.sistemasdistribuidos.soap.rest.reporte.models.listed;
 
 public enum YearCarrer {
     PRIMERO,

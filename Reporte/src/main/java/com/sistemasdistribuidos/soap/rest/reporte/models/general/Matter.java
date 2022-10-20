@@ -1,6 +1,6 @@
 package com.sistemasdistribuidos.soap.rest.reporte.models.general;
 
-import com.sistemasdistribuidos.soap.rest.reporte.listed.YearCarrer;
+import com.sistemasdistribuidos.soap.rest.reporte.models.listed.YearCarrer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
