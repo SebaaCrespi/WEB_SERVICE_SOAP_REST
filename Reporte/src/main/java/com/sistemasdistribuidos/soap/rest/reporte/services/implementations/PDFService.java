@@ -1,7 +1,6 @@
 package com.sistemasdistribuidos.soap.rest.reporte.services.implementations;
 
 import com.lowagie.text.DocumentException;
-import com.sistemasdistribuidos.soap.rest.reporte.dtos.MatterDTO;
 import com.sistemasdistribuidos.soap.rest.reporte.models.listed.YearCarrer;
 import com.sistemasdistribuidos.soap.rest.reporte.models.general.Matter;
 import com.sistemasdistribuidos.soap.rest.reporte.repositories.MatterRepository;
