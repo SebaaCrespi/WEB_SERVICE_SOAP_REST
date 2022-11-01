@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class TeacherMatter {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

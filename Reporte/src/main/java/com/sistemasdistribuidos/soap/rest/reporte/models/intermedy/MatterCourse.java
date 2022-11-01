@@ -17,6 +17,7 @@ import java.time.LocalDate;
 public class MatterCourse {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne

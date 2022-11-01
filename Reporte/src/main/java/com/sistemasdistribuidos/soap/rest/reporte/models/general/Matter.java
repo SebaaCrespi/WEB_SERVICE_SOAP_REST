@@ -23,6 +23,9 @@ public class Matter {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "turn")
+    private String turn;
+
     @Column
     private LocalTime timeSince;
 

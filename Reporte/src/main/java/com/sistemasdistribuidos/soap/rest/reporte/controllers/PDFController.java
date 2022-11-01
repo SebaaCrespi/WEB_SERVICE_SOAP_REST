@@ -3,7 +3,9 @@ package com.sistemasdistribuidos.soap.rest.reporte.controllers;
 import com.lowagie.text.DocumentException;
 import com.sistemasdistribuidos.soap.rest.reporte.models.listed.YearCarrer;
 import com.sistemasdistribuidos.soap.rest.reporte.models.general.Matter;
-import com.sistemasdistribuidos.soap.rest.reporte.repositories.MatterRepository;
+import com.sistemasdistribuidos.soap.rest.reporte.models.user.Student;
+import com.sistemasdistribuidos.soap.rest.reporte.repositories.general.MatterRepository;
+import com.sistemasdistribuidos.soap.rest.reporte.repositories.user.StudentRepository;
 import com.sistemasdistribuidos.soap.rest.reporte.services.IPDFService;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,6 +30,9 @@ public class PDFController {
     @Autowired
     MatterRepository matterRepository;
 
+    @Autowired
+    StudentRepository studentRepository;
+
     @PostMapping("setup")
     public String setUp(){
 
@@ -37,6 +42,7 @@ public class PDFController {
         matter.setTimeSince(LocalTime.of(8,30));
         matter.setTimeUntil(LocalTime.of(12,0));
         matter.setYearCarrer(YearCarrer.PRIMERO);
+        matter.setTurn("MAÑANA");
 
         Matter matter2 = new Matter();
         matter2.setName("Matemática 2");
@@ -44,19 +50,72 @@ public class PDFController {
         matter2.setTimeSince(LocalTime.of(8,30));
         matter2.setTimeUntil(LocalTime.of(12,0));
         matter2.setYearCarrer(YearCarrer.PRIMERO);
+        matter2.setTurn("MAÑANA");
 
         matterRepository.save(matter);
         matterRepository.save(matter2);
+
+        Student student = new Student();
+        student.setName("Gabriel Alberto");
+        student.setLastname("Fernandez");
+        student.setDni("42093874");
+
+        studentRepository.save(student);
 
         return "OK";
     }
 
     @GetMapping("/matters")
     public String generateMattersPDF(HttpServletResponse response,
-            @RequestParam("fourth_month") int value){
+            @RequestParam("fourth_month") int value,
+            @RequestParam(value = "turn", required = false) String turn,
+            @RequestParam(value = "courseId", required = false) long courseId){
 
         try {
-            Path file = Paths.get(pdfService.generatePdf(value).getAbsolutePath());
+            Path file = Paths.get(pdfService.generatePdf(value, turn, courseId, "MATTER").getAbsolutePath());
+
+            if (Files.exists(file)) {
+                response.setContentType("application/pdf");
+                response.addHeader("Content-Disposition",
+                        "attachment; filename=" + file.getFileName());
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            }
+
+        } catch (DocumentException | IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return "Created";
+    }
+
+    @GetMapping("/analytic")
+    public String generateAnalyticPDF(HttpServletResponse response,
+            @RequestParam("studentId") long studentId, @RequestParam("courseId") long courseId){
+
+        try {
+            Path file = Paths.get(pdfService.generatePdf(studentId, courseId, "ANALYTIC").getAbsolutePath());
+
+            if (Files.exists(file)) {
+                response.setContentType("application/pdf");
+                response.addHeader("Content-Disposition",
+                        "attachment; filename=" + file.getFileName());
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            }
+
+        } catch (DocumentException | IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return "Created";
+    }
+
+    @GetMapping("/exams")
+    public String generateExamsPDF(HttpServletResponse response, @RequestParam("period") int period){
+
+        try {
+            Path file = Paths.get(pdfService.generatePdf(period).getAbsolutePath());
 
             if (Files.exists(file)) {
                 response.setContentType("application/pdf");

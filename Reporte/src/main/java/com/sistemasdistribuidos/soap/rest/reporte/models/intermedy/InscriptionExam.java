@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class InscriptionExam {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne

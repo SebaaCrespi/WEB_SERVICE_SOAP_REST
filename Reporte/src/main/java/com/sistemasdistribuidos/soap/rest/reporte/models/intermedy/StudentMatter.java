@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class StudentMatter {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -26,7 +27,10 @@ public class StudentMatter {
     @JoinColumn(name = "matter_id")
     private Matter matter;
 
-    private int noteFirts;
-    private int noteSecond;
+    @Column
+    private float noteFirst;
+
+    @Column
+    private float noteSecond;
 
 }

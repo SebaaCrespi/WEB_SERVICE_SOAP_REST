@@ -17,6 +17,7 @@ import javax.persistence.*;
 public class InscriptionCourse {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne

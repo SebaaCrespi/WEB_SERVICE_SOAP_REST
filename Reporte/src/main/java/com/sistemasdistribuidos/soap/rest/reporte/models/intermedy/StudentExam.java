@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class StudentExam {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
@@ -26,5 +27,6 @@ public class StudentExam {
     @JoinColumn(name = "exam_id")
     private Exam exam;
 
-    private int note;
+    @Column
+    private float note;
 }
