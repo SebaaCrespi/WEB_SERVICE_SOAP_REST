@@ -11,12 +11,14 @@
 <body>
 
     <div align="center">
-        <span style="color: black; font-weight: bold; font-size: 34px;" th:text="${month}"></span>
+        <span style="color: black; font-weight: bold; font-size: 25px;" th:text="${period}"></span>
+        <br/>
         <br/>
         <div class="line"></div>
         <br/>
         <br/>
     </div>
+
 
     <div align="left">
         <span style="border-bottom: solid black 1px; color: black; font-weight: bold; font-size: 20px;">PRIMER AÑO</span>
@@ -28,16 +30,18 @@
             <table class="object_table_batch paginate-table">
                 <thead>
                 <tr style="font-weight: 100;">
-                    <th align="left">NOMBRE</th>
-                    <th align="left">DESDE</th>
-                    <th align="left">HASTA</th>
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="matter : ${primero}">
-                    <td align="left" th:text="${matter?.name}"></td>
-                    <td align="left" th:text="${matter?.timeSince}"></td>
-                    <td align="left" th:text="${matter?.timeUntil}"></td>
+                <tr th:each="exam : ${primero}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
                 </tr>
                 </tbody>
             </table>
@@ -57,16 +61,18 @@
             <table class="object_table_batch paginate-table">
                 <thead>
                 <tr style="font-weight: 100;">
-                    <th align="left">NOMBRE</th>
-                    <th align="left">DESDE</th>
-                    <th align="left">HASTA</th>
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="matter : ${segundo}">
-                    <td align="left" th:text="${matter?.name}"></td>
-                    <td align="left" th:text="${matter?.timeSince}"></td>
-                    <td align="left" th:text="${matter?.timeUntil}"></td>
+                <tr th:each="exam : ${segundo}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
                 </tr>
                 </tbody>
             </table>
@@ -86,16 +92,18 @@
             <table class="object_table_batch paginate-table">
                 <thead>
                 <tr style="font-weight: 100;">
-                    <th align="left">NOMBRE</th>
-                    <th align="left">DESDE</th>
-                    <th align="left">HASTA</th>
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="matter : ${tercero}">
-                    <td align="left" th:text="${matter?.name}"></td>
-                    <td align="left" th:text="${matter?.timeSince}"></td>
-                    <td align="left" th:text="${matter?.timeUntil}"></td>
+                <tr th:each="exam : ${tercero}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
                 </tr>
                 </tbody>
             </table>
@@ -115,16 +123,18 @@
             <table class="object_table_batch paginate-table">
                 <thead>
                 <tr style="font-weight: 100;">
-                    <th align="left">NOMBRE</th>
-                    <th align="left">DESDE</th>
-                    <th align="left">HASTA</th>
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="matter : ${cuarto}">
-                    <td align="left" th:text="${matter?.name}"></td>
-                    <td align="left" th:text="${matter?.timeSince}"></td>
-                    <td align="left" th:text="${matter?.timeUntil}"></td>
+                <tr th:each="exam : ${cuarto}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
                 </tr>
                 </tbody>
             </table>
@@ -136,7 +146,7 @@
 
     <div class="footer">
         <span style="color: rgb(74, 77, 82);">Reporte</span>
-        <span style="font-weight: bold;" th:text="${month}"></span>
+        <span style="font-weight: bold;" th:text="${period}"></span>
     </div>
 </body>
 </html>

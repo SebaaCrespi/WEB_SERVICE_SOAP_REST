@@ -25,7 +25,7 @@ public class Exam {
     @Column(name = "fecha")
     private LocalDate fecha;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "matter_id", referencedColumnName = "id_matter")
     private Matter matter;
 }

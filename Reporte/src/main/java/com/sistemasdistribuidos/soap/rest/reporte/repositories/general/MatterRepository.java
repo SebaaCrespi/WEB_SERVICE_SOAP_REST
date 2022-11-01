@@ -1,4 +1,4 @@
-package com.sistemasdistribuidos.soap.rest.reporte.repositories;
+package com.sistemasdistribuidos.soap.rest.reporte.repositories.general;
 
 import com.sistemasdistribuidos.soap.rest.reporte.models.general.Matter;
 import java.util.List;
