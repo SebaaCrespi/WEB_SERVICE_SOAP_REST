@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/pdf")
-@Api(value = "Controller for PDF generation in Report Module")
+@Api(tags = "PDF Controller",description = "Controller for PDF generation in Report Module")
 public class PDFController {
 
     @Autowired
@@ -77,7 +77,7 @@ public class PDFController {
     @ApiResponse(code = 200, message = "Successfully created PDF")
     public String generateMattersPDF(HttpServletResponse response,
             @RequestParam("fourth_month")
-            @ApiParam(name = "fourth_month", required = true, example = "1") int value,
+            @ApiParam(value = "fourth_month", required = true, example = "1") int value,
             @RequestParam(value = "turn", required = false) String turn,
             @RequestParam(value = "courseId", required = false) long courseId){
 
@@ -104,7 +104,7 @@ public class PDFController {
     @ApiResponse(code = 200, message = "Successfully created PDF")
     public String generateAnalyticPDF(HttpServletResponse response,
             @RequestParam("studentId")
-            @ApiParam(name = "studentId", required = true, example = "1") long studentId,
+            @ApiParam(value = "studentId", required = true, example = "1") long studentId,
             @RequestParam("courseId") long courseId){
 
         try {
@@ -130,7 +130,7 @@ public class PDFController {
     @ApiResponse(code = 200, message = "Successfully created PDF")
     public String generateExamsPDF(HttpServletResponse response,
             @RequestParam("period")
-            @ApiParam(name = "period", required = true, example = "1") int period){
+            @ApiParam(value = "period", required = true, example = "1") int period){
 
         try {
             Path file = Paths.get(pdfService.generatePdf(period).getAbsolutePath());
