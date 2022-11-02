@@ -7,6 +7,10 @@ import com.sistemasdistribuidos.soap.rest.reporte.models.user.Student;
 import com.sistemasdistribuidos.soap.rest.reporte.repositories.general.MatterRepository;
 import com.sistemasdistribuidos.soap.rest.reporte.repositories.user.StudentRepository;
 import com.sistemasdistribuidos.soap.rest.reporte.services.IPDFService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/pdf")
+@Api(tags = "PDF Controller",description = "Controller for PDF generation in Report Module")
 public class PDFController {
 
     @Autowired
@@ -34,6 +39,8 @@ public class PDFController {
     StudentRepository studentRepository;
 
     @PostMapping("setup")
+    @ApiOperation(value = "Setup data", response = String.class)
+    @ApiResponse(code = 200, message = "Successfully created data")
     public String setUp(){
 
         Matter matter = new Matter();
@@ -66,8 +73,11 @@ public class PDFController {
     }
 
     @GetMapping("/matters")
+    @ApiOperation(value = "Create PDF with the Matters filtered by first or second fourth months", response = String.class)
+    @ApiResponse(code = 200, message = "Successfully created PDF")
     public String generateMattersPDF(HttpServletResponse response,
-            @RequestParam("fourth_month") int value,
+            @RequestParam("fourth_month")
+            @ApiParam(value = "fourth_month", required = true, example = "1") int value,
             @RequestParam(value = "turn", required = false) String turn,
             @RequestParam(value = "courseId", required = false) long courseId){
 
@@ -90,8 +100,12 @@ public class PDFController {
     }
 
     @GetMapping("/analytic")
+    @ApiOperation(value = "Create PDF with Analytic Certificate from the requested Student", response = String.class)
+    @ApiResponse(code = 200, message = "Successfully created PDF")
     public String generateAnalyticPDF(HttpServletResponse response,
-            @RequestParam("studentId") long studentId, @RequestParam("courseId") long courseId){
+            @RequestParam("studentId")
+            @ApiParam(value = "studentId", required = true, example = "1") long studentId,
+            @RequestParam("courseId") long courseId){
 
         try {
             Path file = Paths.get(pdfService.generatePdf(studentId, courseId, "ANALYTIC").getAbsolutePath());
@@ -112,7 +126,11 @@ public class PDFController {
     }
 
     @GetMapping("/exams")
-    public String generateExamsPDF(HttpServletResponse response, @RequestParam("period") int period){
+    @ApiOperation(value = "Create PDF with all Matters filtered by the requested exam period", response = String.class)
+    @ApiResponse(code = 200, message = "Successfully created PDF")
+    public String generateExamsPDF(HttpServletResponse response,
+            @RequestParam("period")
+            @ApiParam(value = "period", required = true, example = "1") int period){
 
         try {
             Path file = Paths.get(pdfService.generatePdf(period).getAbsolutePath());
