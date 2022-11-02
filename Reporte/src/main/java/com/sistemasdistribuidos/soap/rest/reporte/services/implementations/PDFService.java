@@ -107,7 +107,7 @@ public class PDFService implements IPDFService {
                 String data = String.format("Conste que el alumno %s DNI Nº %s ha aprobado "
                         + "los espacios curriculares que, con las respectivas calificaciones que abajo se registran, "
                         + "correspondientes a la carrera %s",
-                        analyticPDF.getCompleteName(), analyticPDF.getDni(), analyticPDF.getCourseName());
+                        analyticPDF.getCompleteName(), analyticPDF.getDni(), "Licenciatura en Sistemas");
                 LocalDate date = LocalDate.now();
                 String footer = String.format("A solicitud del interesado y a los efectos que corresponda, "
                                 + "se extiende el presente certificado, en la ciudad de Lanús "
