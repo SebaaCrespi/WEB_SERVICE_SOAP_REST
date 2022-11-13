@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PDF TESTn</title>
+    <bookmarks>
+        <bookmark href="#students" name="PDF TEST"></bookmark>
+    </bookmarks>
+    <link href="css/style_template.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+    <div align="center">
+        <span style="border-bottom: solid black 1px; color: black; font-weight: bold; font-size: 25px;">CERTIFICADO ANALÍTICO</span>
+        <br/>
+        <br/>
+        <span style="color: black; font-weight: bold; font-size: 15px;" th:text="${analytic}"></span>
+        <br/>
+        <br/>
+    </div>
+
+    <br/>
+    <div class="line"></div>
+    <br/>
+
+    <div align="left">
+        <table class="object_table_batch paginate-table">
+            <thead>
+            <tr style="font-weight: 200;">
+                <th align="left">CURSO</th>
+                <th align="left">ESPACIOS CURRICULARES</th>
+                <th align="left">FECHA DE APROBACIÓN</th>
+                <th align="left">CALIFICACIÓN</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="matter1 : ${primero}">
+                <td align="left" th:text="${matter1?.year}"></td>
+                <td align="left" th:text="${matter1?.name}"></td>
+                <td align="left" th:text="${matter1?.date}"></td>
+                <td align="left" th:text="${matter1?.note}"></td>
+            </tr>
+
+            <tr th:each="matter2 : ${segundo}">
+                <td align="left" th:text="${matter2?.year}"></td>
+                <td align="left" th:text="${matter2?.name}"></td>
+                <td align="left" th:text="${matter2?.date}"></td>
+                <td align="left" th:text="${matter2?.note}"></td>
+            </tr>
+
+            <tr th:each="matter3 : ${tercero}">
+                <td align="left" th:text="${matter3?.year}"></td>
+                <td align="left" th:text="${matter3?.name}"></td>
+                <td align="left" th:text="${matter3?.date}"></td>
+                <td align="left" th:text="${matter3?.note}"></td>
+            </tr >
+
+            <tr th:each="matter4 : ${cuarto}">
+                <td align="left" th:text="${matter4?.year}"></td>
+                <td align="left" th:text="${matter4?.name}"></td>
+                <td align="left" th:text="${matter4?.date}"></td>
+                <td align="left" th:text="${matter4?.note}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div align="left">
+        <br/>
+        <span style="color: black; font-weight: bold; font-size: 15px;" th:text="${average}"></span>
+        <br/>
+    </div>
+
+    <br/>
+    <div class="line"></div>
+    <br/>
+    <br/>
+
+    <div align="center">
+        <span style="color: black; font-weight: bold; font-size: 15px;" th:text="${footer}"></span>
+    </div>
+
+</body>
+</html>

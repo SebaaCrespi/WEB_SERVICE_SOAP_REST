@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PDF TESTn</title>
+    <bookmarks>
+        <bookmark href="#students" name="PDF TEST"></bookmark>
+    </bookmarks>
+    <link href="css/style_template.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+    <div align="center">
+        <span style="color: black; font-weight: bold; font-size: 25px;" th:text="${period}"></span>
+        <br/>
+        <br/>
+        <div class="line"></div>
+        <br/>
+        <br/>
+    </div>
+
+
+    <div align="left">
+        <span style="border-bottom: solid black 1px; color: black; font-weight: bold; font-size: 20px;">PRIMER AÑO</span>
+        <br/>
+        <br/>
+    </div>
+    <div id="primero">
+        <div>
+            <table class="object_table_batch paginate-table">
+                <thead>
+                <tr style="font-weight: 100;">
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exam : ${primero}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div class="line"></div>
+    <br/>
+
+    <div align="left">
+        <span style="border-bottom: solid black 1px; color: black; font-weight: bold; font-size: 20px;">SEGUNDO AÑO</span>
+        <br/>
+        <br/>
+    </div>
+    <div id="segundo">
+        <div>
+            <table class="object_table_batch paginate-table">
+                <thead>
+                <tr style="font-weight: 100;">
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exam : ${segundo}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div class="line"></div>
+    <br/>
+
+    <div align="left">
+        <span style="border-bottom: solid black 1px; color: black; font-weight: bold; font-size: 20px;">TERCER AÑO</span>
+        <br/>
+        <br/>
+    </div>
+    <div id="tercero">
+        <div>
+            <table class="object_table_batch paginate-table">
+                <thead>
+                <tr style="font-weight: 100;">
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exam : ${tercero}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div class="line"></div>
+    <br/>
+
+    <div align="left">
+        <span style="border-bottom: solid black 1px; color: black; font-weight: bold; font-size: 20px;">CUARTO AÑO</span>
+        <br/>
+        <br/>
+    </div>
+    <div id="cuarto">
+        <div>
+            <table class="object_table_batch paginate-table">
+                <thead>
+                <tr style="font-weight: 100;">
+                    <th align="left">MATERIA</th>
+                    <th align="left">DOCENTE</th>
+                    <th align="left">FECHA</th>
+                    <th align="left">HORA</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exam : ${cuarto}">
+                    <td align="left" th:text="${exam?.matterName}"></td>
+                    <td align="left" th:text="${exam?.teacherCompleteName}"></td>
+                    <td align="left" th:text="${exam?.date}"></td>
+                    <td align="left" th:text="${exam?.time}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div class="line"></div>
+    <br/>
+
+    <div class="footer">
+        <span style="color: rgb(74, 77, 82);">Reporte</span>
+        <span style="font-weight: bold;" th:text="${period}"></span>
+    </div>
+</body>
+</html>
