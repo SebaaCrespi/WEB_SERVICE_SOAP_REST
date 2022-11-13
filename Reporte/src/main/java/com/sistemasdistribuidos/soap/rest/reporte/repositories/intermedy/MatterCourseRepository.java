@@ -10,4 +10,6 @@ public interface MatterCourseRepository extends JpaRepository<MatterCourse, Long
 
     List<MatterCourse> findAllByCourse_Id(long courseId);
 
+    List<MatterCourse> findAllByMatter_IdAndCourse_IdIn(long matterId, List<Long> courseIds);
+
 }

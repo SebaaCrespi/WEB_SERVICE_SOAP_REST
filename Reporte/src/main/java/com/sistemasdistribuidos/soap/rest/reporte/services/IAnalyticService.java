@@ -4,6 +4,6 @@ import com.sistemasdistribuidos.soap.rest.reporte.dto.pdf.AnalyticPDF;
 
 public interface IAnalyticService {
 
-   AnalyticPDF buildAnalyticData(long studentId, long courseId);
+   AnalyticPDF buildAnalyticData(long studentId);
 
 }

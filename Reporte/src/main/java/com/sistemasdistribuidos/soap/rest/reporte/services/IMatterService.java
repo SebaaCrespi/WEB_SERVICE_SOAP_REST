@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface IMatterService {
 
-    List<MatterPDF> buildMatterByFourthPDF(int valueMont, String turn, long courseId);
+    List<MatterPDF> buildMatterByFourthPDF(int valueMont);
 
 }

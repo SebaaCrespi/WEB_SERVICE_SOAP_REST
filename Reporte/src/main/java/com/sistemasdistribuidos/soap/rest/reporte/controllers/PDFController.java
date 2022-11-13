@@ -77,12 +77,10 @@ public class PDFController {
     @ApiResponse(code = 200, message = "Successfully created PDF")
     public String generateMattersPDF(HttpServletResponse response,
             @RequestParam("fourth_month")
-            @ApiParam(value = "fourth_month", required = true, example = "1") int value,
-            @RequestParam(value = "turn", required = false) String turn,
-            @RequestParam(value = "courseId", required = false) long courseId){
+            @ApiParam(value = "fourth_month", required = true, example = "1") int value){
 
         try {
-            Path file = Paths.get(pdfService.generatePdf(value, turn, courseId, "MATTER").getAbsolutePath());
+            Path file = Paths.get(pdfService.generatePdf(value,"MATTER").getAbsolutePath());
 
             if (Files.exists(file)) {
                 response.setContentType("application/pdf");
@@ -104,11 +102,10 @@ public class PDFController {
     @ApiResponse(code = 200, message = "Successfully created PDF")
     public String generateAnalyticPDF(HttpServletResponse response,
             @RequestParam("studentId")
-            @ApiParam(value = "studentId", required = true, example = "1") long studentId,
-            @RequestParam("courseId") long courseId){
+            @ApiParam(value = "studentId", required = true, example = "1") long studentId){
 
         try {
-            Path file = Paths.get(pdfService.generatePdf(studentId, courseId, "ANALYTIC").getAbsolutePath());
+            Path file = Paths.get(pdfService.generatePdf(studentId, "ANALYTIC").getAbsolutePath());
 
             if (Files.exists(file)) {
                 response.setContentType("application/pdf");

@@ -6,9 +6,9 @@ import java.io.IOException;
 
 public interface IPDFService {
 
-    File generatePdf(int valueMont, String turn, long courseId, String type) throws IOException, DocumentException;
+    File generatePdf(int valueMont, String type) throws IOException, DocumentException;
 
-    File generatePdf(long studentId, long courseId, String type) throws IOException, DocumentException;
+    File generatePdf(long studentId, String type) throws IOException, DocumentException;
 
     File generatePdf(int period) throws DocumentException, IOException;
 

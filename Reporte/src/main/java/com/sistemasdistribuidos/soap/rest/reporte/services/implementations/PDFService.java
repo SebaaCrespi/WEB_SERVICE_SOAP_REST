@@ -43,9 +43,9 @@ public class PDFService implements IPDFService {
     private IExamService examService;
 
     @Override
-    public File generatePdf(int valueMont, String turn, long courseId, String type) throws IOException, DocumentException {
+    public File generatePdf(int valueMont, String type) throws IOException, DocumentException {
 
-        List<MatterPDF> matters = matterService.buildMatterByFourthPDF(valueMont, turn, courseId);
+        List<MatterPDF> matters = matterService.buildMatterByFourthPDF(valueMont);
 
         Context context = getContext(matters, type);
 
@@ -55,8 +55,8 @@ public class PDFService implements IPDFService {
     }
 
     @Override
-    public File generatePdf(long studentId, long courseId, String type) throws IOException, DocumentException {
-        Context context = getContext(analyticService.buildAnalyticData(studentId, courseId), type);
+    public File generatePdf(long studentId, String type) throws IOException, DocumentException {
+        Context context = getContext(analyticService.buildAnalyticData(studentId), type);
 
         String html = loadAndFillTemplate(context, type);
 
@@ -114,13 +114,15 @@ public class PDFService implements IPDFService {
                                 + "(Bs.As.) a los %d dias del mes %d del año %d",
                 date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 
+                String average = String.valueOf(analyticPDF.getAverage()).length() > 4 ?
+                        String.valueOf(analyticPDF.getAverage()).substring(0,4) : String.valueOf(analyticPDF.getAverage());
+
                 context.setVariable("analytic", data);
                 context.setVariable("primero", analyticPDF.getMatters1());
                 context.setVariable("segundo", analyticPDF.getMatters2());
                 context.setVariable("tercero", analyticPDF.getMatters3());
                 context.setVariable("cuarto", analyticPDF.getMatters4());
-                context.setVariable("average", "PROMEDIO GENERAL: " +
-                        String.valueOf(analyticPDF.getAverage()).substring(0,4));
+                context.setVariable("average", "PROMEDIO GENERAL: " + average);
                 context.setVariable("footer", footer);
                 break;
             }
