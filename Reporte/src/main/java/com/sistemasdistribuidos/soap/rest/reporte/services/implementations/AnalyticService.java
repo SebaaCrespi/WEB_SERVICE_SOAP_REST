@@ -31,20 +31,18 @@ public class AnalyticService implements IAnalyticService {
     private MatterCourseRepository matterCourseRepository;
 
     @Override
-    public AnalyticPDF buildAnalyticData(long studentId, long courseId) {
+    public AnalyticPDF buildAnalyticData(long studentId) {
         AnalyticPDF data = new AnalyticPDF();
         List<MatterPDF> matters = new ArrayList<>();
 
         List<StudentMatter> studentMatters = studentMatterRepository.findByStudent_Id(studentId);
         List<StudentExam> studentExams = studentExamRepository.findByStudent_Id(studentId);
-        List<MatterCourse> matterCourses = matterCourseRepository.findAllByCourse_Id(courseId);
-        List<Long> mattersIds = matterCourses.stream()
-                .map(mc -> mc.getMatter().getId()).collect(Collectors.toList());
+        List<Long> mattersIds = studentMatters.stream()
+                .map(sm -> sm.getMatter().getId()).collect(Collectors.toList());
 
         Student student = studentMatters.get(0).getStudent();
         data.setDni(student.getDni());
         data.setCompleteName(student.getName() + " " + student.getLastname());
-        data.setCourseName(matterCourses.get(0).getCourse().getName());
 
         for (StudentExam sExam : studentExams){
             MatterPDF matterPDF = new MatterPDF();

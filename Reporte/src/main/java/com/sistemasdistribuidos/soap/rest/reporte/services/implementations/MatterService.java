@@ -24,7 +24,7 @@ public class MatterService implements IMatterService {
     TeacherMatterRepository teacherMatterRepository;
 
     @Override
-    public List<MatterPDF> buildMatterByFourthPDF(int valueMont, String turn, long courseId) {
+    public List<MatterPDF> buildMatterByFourthPDF(int valueMont) {
         List<MatterPDF> matterPDFS = new ArrayList<>();
         boolean isFirstFourth = valueMont == 1;
         //List<MatterCourse> matterCourses = matterCourseRepository.findAllByCourse_Id(courseId);
