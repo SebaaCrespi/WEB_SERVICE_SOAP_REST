@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Matter{% endblock %}
+
+{% block body %}
+
+    {% set content = include('matter/_form.html.twig') %}
+        {% include "card_content.html.twig" with {
+        'appicon': 'fa-dashboard',
+        'title': 'Create new Matter.',
+        'detalle':content,
+        }
+    %}
+    
+{% endblock %}

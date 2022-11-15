@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New InscriptionExam{% endblock %}
+
+{% block body %}
+
+    {% set content = include('inscription_exam/_form.html.twig') %}
+        {% include "card_content.html.twig" with {
+        'appicon': 'fa-dashboard',
+        'title': 'Create new Inscription (Exam).',
+        'detalle':content,
+        }
+    %}
+    
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teacher-Course{% endblock %}
+
+{% block body %}
+
+    {% for flash_message in app.session.flashbag.get('massage_success') %}
+        <div class="flash-success">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+    {% for flash_message in app.session.flashbag.get('massage_danger') %}
+        <div class="flash-danger">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+    {% set content = include('teacher_course/_form.html.twig') %}
+        {% include "card_content.html.twig" with {
+        'appicon': 'fa-dashboard',
+        'title': 'Asignar una cursada a un profesor.',
+        'detalle':content,
+        }
+    %}
+
+    <a href="{{ path('app_dashboard') }}">ir al dashboard</a>
+{% endblock %}

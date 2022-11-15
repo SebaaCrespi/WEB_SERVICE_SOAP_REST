@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teacher{% endblock %}
+
+{% block body %}
+
+    {% set content = include('teacher/_teacher_details.html.twig') %}
+        {% include "card_content.html.twig" with {
+        'appicon': 'fa-dashboard',
+        'title': 'Teacher.',
+        'detalle':content,
+        }
+    %}
+
+{% endblock %}
