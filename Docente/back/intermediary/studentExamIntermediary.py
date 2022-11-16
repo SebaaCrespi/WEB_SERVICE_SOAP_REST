@@ -26,7 +26,14 @@ class IntermediaryStudentExam():
         return student_exam
 
     def upload_exam_grades_by_excel():
-        exam_id = request.json['exam_id']
+        args = request.args
+        exam_id = args.get("exam_id")
+        #exam_id = request.files['exam_id']
+        myfile = request.files['file']
+        fout = open('./files/exam_grades.xlsx','wb')
+        fout.write(myfile.read())
+        fout.close()
+
         df = pd.read_excel('./files/exam_grades.xlsx')
         notes = []
         for index, row in df.iterrows():

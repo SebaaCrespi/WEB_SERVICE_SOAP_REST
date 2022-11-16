@@ -19,4 +19,5 @@ code {
 .buttonNotes .notes{
   background-color: green;
   border: green;
+  margin: 10px 20px;
 }

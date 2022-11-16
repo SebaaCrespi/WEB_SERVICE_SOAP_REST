@@ -77,7 +77,7 @@ def get_final_course_note_students():
 def get_students_exams():
     return IntermediaryStudentExam.get_students_exams()
 
-@app.route('/upload_exam_grades_by_excel', methods=['GET'])
+@app.route('/upload_exam_grades_by_excel', methods=['POST'])
 def upload_exam_grades_by_excel():
     return IntermediaryStudentExam.upload_exam_grades_by_excel()
 
