@@ -7,7 +7,6 @@ $namespace = "Soap/Student/StudentGetCourseSOAP";
 $server = new soap_server();
 $server->configureWSDL("studentGetCourseSoap",$namespace); 
 $server->wsdl->schemaTargeNamespace = $namespace;
-
 //Estructura del servicio 
 $server->wsdl->addComplexType(
     'listaDeObjetos',
@@ -64,9 +63,25 @@ function studentGetCourseSoapService($request){
     $resultado_query = mysqli_query($connection, $user_query);
 
     while($response_query_row = mysqli_fetch_array($resultado_query)){
+        // conseguir nombre de la materia
+        $matter_query = "SELECT * FROM matter WHERE id=".$response_query_row['matter_id'];
+        $resultado_query_matter = mysqli_query($connection, $matter_query);
+        $response_query_matter_row = mysqli_fetch_array($resultado_query_matter);
+        // conseguir id del docente
+        $teacher_query = "SELECT * FROM teacher_course WHERE course_id=".$response_query_row['id'];
+        $resultado_query_teacher = mysqli_query($connection, $teacher_query);
+        $response_query_teacher_row = mysqli_fetch_array($resultado_query_teacher);
+        $prueba = $response_query_teacher_row;
+        // conseguir nombre del docente
+        $teacher_name_query = "SELECT * FROM user WHERE id=".$response_query_teacher_row['teacher_id'];
+        $resultado_query_teacher_name = mysqli_query($connection, $teacher_name_query);
+        $response_query_teacher_name_row = mysqli_fetch_array($resultado_query_teacher_name);
         $objeto = [    
-            "id" => $response_query_row['id'], 
+            "course_id" => $response_query_row['id'], 
             "matter_id" => $response_query_row['matter_id'],
+            "matter_name" => $response_query_matter_row['name'],
+            "teacher_id" => $response_query_teacher_row['teacher_id'],
+            "teacher_name" => $response_query_teacher_name_row['lastname']." ".$response_query_teacher_name_row['name'],
             "until_change_note" => $response_query_row['until_change_note'],
             "date_start" => $response_query_row['date_start'],
             "date_end" => $response_query_row['date_end'],
@@ -84,7 +99,6 @@ function studentGetCourseSoapService($request){
         "Resultado" => $resultado
     );
 }
-
 $POST_DATA = file_get_contents("php://input");
 $server->service($POST_DATA);
 exit();
