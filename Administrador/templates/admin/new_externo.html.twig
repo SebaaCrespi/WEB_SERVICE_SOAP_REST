@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ----- Admin{% endblock %}
+
+{% block body %}
+
+    {% for flash_message in app.session.flashbag.get('massage') %}
+        <div class="flash-danger">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+    {% set content = include('admin/_form.admin.externo.html.twig') %}
+        {% include "card_content.html.twig" with {
+        'appicon': 'fa-dashboard',
+        'title': 'Create new Admin.',
+        'detalle':content,
+        }
+    %}
+    
+    <a href="{{ path('app_admin_index') }}">back to login</a>
+{% endblock %}

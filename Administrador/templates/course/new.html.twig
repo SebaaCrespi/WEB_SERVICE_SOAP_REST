@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Course{% endblock %}
+
+{% block body %}
+
+    {% set content = include('course/_form.html.twig') %}
+        {% include "card_content.html.twig" with {
+        'appicon': 'fa-dashboard',
+        'title': 'Create new Course.',
+        'detalle':content,
+        }
+    %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+    {% set content = include('admin/_admin_details.html.twig') %}
+        {% include "card_content.html.twig" with {
+        'appicon': 'fa-dashboard',
+        'title': 'Admin.',
+        'detalle':content,
+        }
+    %}
+    
+{% endblock %}
