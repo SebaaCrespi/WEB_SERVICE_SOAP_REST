@@ -64,7 +64,7 @@ def get_student_course_by_ID():
 def get_course_by_ID():
     return IntermediaryStudentCourse.get_course_by_ID()
 
-@app.route('/upload_grades_by_excel', methods=['GET'])
+@app.route('/upload_grades_by_excel', methods=['POST'])
 def upload_grades_by_excel():
     return IntermediaryStudentCourse.upload_grades_by_excel()
 

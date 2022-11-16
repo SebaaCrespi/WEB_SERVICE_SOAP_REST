@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.buttonNotes a{
+  margin: 10px 20px;
+}
+
+
+.buttonNotes .notes{
+  background-color: green;
+  border: green;
+}
