@@ -22,16 +22,6 @@ function Home() {
             method: 'POST',
             body: formData
         })
-
-        /* 
-         myfile = request.files['file']
-        print(myfile)
-        filedir = './files'
-
-        fout = open(filedir + '/' + myfile.filename,'wb')
-        fout.write(myfile.read())
-        fout.close()
-        */
     }
     useEffect(() => {
         const queryParameters = new URLSearchParams(window.location.search)

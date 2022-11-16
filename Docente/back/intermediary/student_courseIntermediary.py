@@ -44,6 +44,12 @@ class IntermediaryStudentCourse():
         return student_course
 
     def upload_grades_by_excel():
+        myfile = request.files['file']
+        filedir = './files'
+        fout = open(filedir + '/' + 'grades.xlsx','wb')
+        fout.write(myfile.read())
+        fout.close()
+
         df = pd.read_excel('./files/grades.xlsx')
         courses = []
         for index, row in df.iterrows():
